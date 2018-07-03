@@ -1,0 +1,79 @@
+<import src="../../components/templates/templates.wxml"/>
+<view class="app" hidden="{{page_hidden}}">
+<web-view wx-if="{{false}}" src="{{false}}"></web-view>
+<component-share pageQRCodeData="{{pageQRCodeData}}"></component-share>
+<component-backhome backToHomePage="{{backToHomePage}}"></component-backhome>
+<component-reward-point rewardPointObj="{{rewardPointObj}}"></component-reward-point>
+<component-shop-vip shopVipModal="{{shopVipModal}}"></component-shop-vip>
+<component-getUserInfo showGetUserInfo="{{showGetUserInfo}}"></component-getUserInfo>
+<component-filter filterShow="{{filterShow}}" chooseCateId="{{categoryId}}" form="{{classifyGroupForm}}" bind:confirm="filterConfirm"></component-filter>
+<component-formPay formInfo="{{formInfo}}"></component-formPay>
+<view class="ele-container" wx:if="{{!title_ele1.hidden}}">
+  <template is="zcTitle" data="{{data:title_ele1, detail_data: detail_data}}"></template>
+</view>
+<view class="ele-container">
+  <block wx:if="{{ detail_data && detail_data }}">
+    <template is="zcCarousel" data="{{data:carousel2, detail_data: detail_data}}"></template>
+  </block>
+  <block wx:else>
+    <template is="zcCarousel" data="{{data:carousel2}}"></template>
+  </block>
+</view>
+<template is="carouselVideoPlay" data="{{data:carousel2}}"></template>
+<view class="ele-container" wx:if="{{!classify3.hidden}}">
+  <template is="zcClassify" data="{{data:classify3}}"></template>
+</view><view class="ele-container" wx:if="{{!text4.hidden}}">
+  <block wx:if="{{text4.customFeature.segment == 'default_map' && real_value}}">
+  <!-- 在动态列表中的双栏中绑定地图 -->
+    <template is="zcText" data="{{data:text4,  form_data: real_value.form_data}}"></template>
+  </block>
+  <block wx:elif="{{text4.customFeature.segment == 'default_map'}}">
+  <!-- 动态列表,动态容器 与详情页绑定地图 -->
+    <template is="zcText" data="{{data:text4, form_data: item.form_data, detail_data: detail_data}}"></template>
+  </block>
+  <block wx:elif="{{real_value}}">
+    <template is="zcText" data="{{data:text4, detail_data: detail_data}}"></template>
+  </block>
+  <block wx:elif="{{detail_data && in_dynamic_vessel !== 'true'}}">
+    <template is="zcText" data="{{data:text4, detail_data: detail_data}}"></template>
+  </block>
+  <block wx:elif="{{in_dynamic_vessel === 'true'}}">
+    <template is="zcText" data="{{data:text4, detail_data: detail_data}}"></template>
+  </block>
+  <block wx:else>
+    <template is="zcText" data="{{data:text4, detail_data: detail_data}}"></template>
+  </block>
+</view>
+
+<view class="ele-container" wx:if="{{!album5.hidden}}">
+  <template is="zcAlbum" data="{{data:album5}}"></template>
+</view><view class="ele-container" wx:if="{{!text6.hidden}}">
+  <block wx:if="{{text6.customFeature.segment == 'default_map' && real_value}}">
+  <!-- 在动态列表中的双栏中绑定地图 -->
+    <template is="zcText" data="{{data:text6,  form_data: real_value.form_data}}"></template>
+  </block>
+  <block wx:elif="{{text6.customFeature.segment == 'default_map'}}">
+  <!-- 动态列表,动态容器 与详情页绑定地图 -->
+    <template is="zcText" data="{{data:text6, form_data: item.form_data, detail_data: detail_data}}"></template>
+  </block>
+  <block wx:elif="{{real_value}}">
+    <template is="zcText" data="{{data:text6, detail_data: detail_data}}"></template>
+  </block>
+  <block wx:elif="{{detail_data && in_dynamic_vessel !== 'true'}}">
+    <template is="zcText" data="{{data:text6, detail_data: detail_data}}"></template>
+  </block>
+  <block wx:elif="{{in_dynamic_vessel === 'true'}}">
+    <template is="zcText" data="{{data:text6, detail_data: detail_data}}"></template>
+  </block>
+  <block wx:else>
+    <template is="zcText" data="{{data:text6, detail_data: detail_data}}"></template>
+  </block>
+</view>
+
+<view class="ele-container" wx:if="{{!album7.hidden}}">
+  <template is="zcAlbum" data="{{data:album7}}"></template>
+</view>
+<view style="height:20px;width:100%;overflow:hidden;margin-top:10px;">
+  <image style="width:80%;height:35px;margin:-15px 10% 0 10%;" src="http://cdn.jisuapp.cn/zhichi_frontend/static/webapp/images/tec-support.png"></image>
+</view>
+</view>
